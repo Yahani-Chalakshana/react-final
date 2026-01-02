@@ -1,3 +1,5 @@
+import { parseAddedDate } from "./dateUtils";
+
 export default function filterProperties(properties, filters) {
   return properties.filter((property) => {
 
@@ -36,13 +38,9 @@ export default function filterProperties(properties, filters) {
 
     // Added After Date
     if (filters.addedAfter) {
-      const propDate = new Date(
-        property.added.year,
-        new Date(`${property.added.month} 1`).getMonth(),
-        property.added.day
-      );
+      const propertyDate = parseAddedDate(property.added);
 
-      if (propDate < filters.addedAfter) {
+      if (propertyDate && propertyDate < filters.addedAfter) {
         return false;
       }
     }
