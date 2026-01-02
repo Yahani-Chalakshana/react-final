@@ -52,7 +52,7 @@
             "bedrooms":4,
 			"price":925000,
 			"tenure":"Freehold",
-			"description":"Spacious four bedroom detached house offering generous living accommodation, modern kitchen, private driveway and large rear garden. Ideal for families seeking a quiet residential location...",
+            "description": "Spacious four bedroom detached family residence situated in a quiet cul-de-sac within easy reach of Chislehurst station. The ground floor features a generous dual-aspect living room, a formal dining room, and a modern high-specification kitchen with integrated appliances. Upstairs, the master suite includes a private en-suite shower room, alongside three further double bedrooms and a contemporary family bathroom. Exterior benefits include a private driveway for three cars, a double garage, and a beautifully landscaped south-facing rear garden with a patio area perfect for entertaining...",
 			"location": "Chislehurst Road, Bromley BR7",
             "picture":[
                 "/images/prop3pic1.jpg",
@@ -75,7 +75,7 @@
             "bedrooms":1,
 			"price":275000,
 			"tenure":"Leasehold",
-            "description": "Modern one bedroom apartment located close to local transport links and amenities. Features include open plan living area, fitted kitchen and secure entry system...",
+            "description": "A stunning one bedroom third-floor apartment located in the heart of Lewisham, ideally positioned for commuters with Lewisham Station and DLR links just moments away. This energy-efficient home boasts an expansive open-plan kitchen and living area with floor-to-ceiling windows leading to a private balcony with panoramic city views. The bedroom is a well-proportioned double with fitted wardrobes, and the sleek bathroom features a heated towel rail and rainfall shower. Residents also benefit from a secure entry system, 24-hour concierge service, and access to communal rooftop gardens...",
             "location":"Lewisham High Street, London SE13",
 			"picture":[
                 "/images/prop4pic1.jpg",
@@ -98,7 +98,7 @@
             "bedrooms":5,
 			"price":1200000,
 			"tenure":"Freehold",
-			"description": "Impressive five bedroom executive home featuring high specification interiors, double garage, landscaped garden and excellent access to commuter routes...",
+			"description": "Impressive five bedroom executive detached home offering over 2,500 sq. ft. of luxury living space in the prestigious Sevenoaks area. The property includes a grand entrance hall, three versatile reception rooms, and a bespoke 25' kitchen/breakfast room with marble worktops and bi-fold doors. To the first floor, there are five bedrooms, two with luxury en-suites, and a designer family bathroom. The property is set within a gated plot featuring a double garage and a large private garden backing onto protected woodland. Perfectly located for Sevenoaks school catchments and fast rail links to London Bridge...",
             "location": "Oakwood Avenue, Sevenoaks TN13",
 			"picture":[
                 "/images/prop5pic1.jpg",
@@ -121,7 +121,7 @@
             "bedrooms":3,
 			"price":525000,
 			"tenure":"Leasehold",
-			"description": "Well presented three bedroom penthouse apartment offering panoramic views, modern fittings and allocated parking. Located within a popular development...",
+			"description": "Presented in immaculate condition is this three double bedroom penthouse apartment situated in a sought-after riverside development on the Greenwich Peninsula. The property features an exceptional wrap-around terrace offering unobstructed views of the River Thames and the Canary Wharf skyline. Internally, the vast open-plan living space includes solid oak flooring and a designer kitchen with a breakfast bar. All three bedrooms are spacious doubles, with the master offering a walk-in wardrobe and en-suite. Additional features include two underground parking spaces, underfloor heating throughout, and a 999-year lease...",
             "location": "Greenwich Peninsula, London SE10",
 			"picture":[
                 "/images/prop6pic1.jpg",
@@ -144,7 +144,7 @@
             "bedrooms":2,
 			"price":460000,
 			"tenure":"Freehold",
-			"description": "Charming two bedroom terraced house featuring a modern kitchen, private garden and easy access to local schools and transport links...",
+			"description": "A charming two bedroom Victorian terraced cottage located in the heart of Wimbledon Village, just a short stroll from the common. This characterful home combines period features, such as original fireplaces and sash windows, with modern comforts including a recently fitted shaker-style kitchen and gas central heating. The ground floor offers two interconnected reception rooms and a bright conservatory leading to a secluded cottage garden. The first floor provides two double bedrooms and a spacious family bathroom with a roll-top bath. Offered as Freehold with no onward chain, making it an ideal first-time purchase or investment...",
             "location": "High Street, Wimbledon SW19",
 			"picture":[
                 "/images/prop7pic1.jpg",
