@@ -1,34 +1,19 @@
-import { useState, useEffect } from "react";
+import React from "react";
 
-const FavouriteButton = ({ propertyId }) => {
-  const [isFav, setIsFav] = useState(false);
-
-  // Check localStorage on load
-  useEffect(() => {
-    const favs = JSON.parse(localStorage.getItem("favourites")) || [];
-    setIsFav(favs.includes(propertyId));
-  }, [propertyId]);
+const FavouriteButton = ({ property, favourites, setFavourites }) => {
+  const isFav = favourites.some((f) => f.id === property.id);
 
   const toggleFavourite = () => {
-    const favs = JSON.parse(localStorage.getItem("favourites")) || [];
-    let updatedFavs;
-
-    if (favs.includes(propertyId)) {
-      // Remove from favourites
-      updatedFavs = favs.filter((id) => id !== propertyId);
-      setIsFav(false);
+    if (isFav) {
+      setFavourites(favourites.filter((f) => f.id !== property.id));
     } else {
-      // Add to favourites
-      updatedFavs = [...favs, propertyId];
-      setIsFav(true);
+      setFavourites([...favourites, property]);
     }
-
-    localStorage.setItem("favourites", JSON.stringify(updatedFavs));
   };
 
   return (
     <button onClick={toggleFavourite}>
-      {isFav ? "★ Remove Favourite" : "☆ Add Favourite"}
+      {isFav ? "Remove from Favourites" : "Add to Favourites"}
     </button>
   );
 };
