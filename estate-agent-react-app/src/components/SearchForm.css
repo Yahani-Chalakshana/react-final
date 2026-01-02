@@ -1,0 +1,42 @@
+.search-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+/* Inputs and select */
+.search-form input,
+.search-form select {
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Focus state */
+.search-form input:focus,
+.search-form select:focus {
+  outline: none;
+  border-color: #0077cc;
+}
+
+/* Search button */
+.search-form button {
+  grid-column: 1 / -1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background-color: #005fa3;
+}

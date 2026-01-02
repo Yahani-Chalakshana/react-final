@@ -1,7 +1,13 @@
 import { useState } from "react";
 import propertiesData from "../data/properties.json";
-
 import filterProperties from "../utils/filterProperties";
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import SearchForm from "../components/SearchForm";
+import ResultsSection from "../components/ResultsSection";
+
+import "./SearchPage.css";
 
 const SearchPage = () => {
     const allProperties = propertiesData.properties;
@@ -16,23 +22,18 @@ const SearchPage = () => {
     };
 
     return (
-    <div className="search-page">
-      {/* Header */}
-      <Header />
+        <div className="search-page">
+        <Header />
 
-      {/* Page title */}
-      <h1 className="page-title">Property Search</h1>
+        <h1 className="page-title">Property Search</h1>
 
-      {/* Search Form */}
-      <SearchForm onSearch={handleSearch} />
+        <SearchForm onSearch={handleSearch} />
 
-      {/* Results */}
-      <ResultsSection properties={filteredProperties} />
+        <ResultsSection properties={filteredProperties} />
 
-      {/* Footer */}
-      <Footer />
-    </div>
-  );
-} 
+        <Footer />
+        </div>
+    );
+};
 
 export default SearchPage;

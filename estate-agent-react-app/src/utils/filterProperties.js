@@ -27,10 +27,10 @@ const filterProperties = (properties, criteria) => {
 
     // Postcode filter (first part only)
     if (criteria.postcode) {
-      const postcodeFirst = property.location.split(" ").pop(); // assumes last part is postcode
-      if (!postcodeFirst.startsWith(criteria.postcode.toUpperCase())) {
-        return false;
-      }
+        const postcodeMatch = property.location.match(/[A-Z]{1,2}\d{1,2}/);
+        if (!postcodeMatch || !postcodeMatch[0].startsWith(criteria.postcode.toUpperCase())) {
+            return false;
+        }
     }
 
     // Date added filter
