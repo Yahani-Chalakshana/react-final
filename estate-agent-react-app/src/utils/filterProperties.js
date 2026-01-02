@@ -1,29 +1,27 @@
 const filterProperties = (properties, filters) => {
-  const { type, bedrooms, minPrice, maxPrice, tenure, location, addedAfter } = filters;
+  return properties.filter((p) => {
+    if (filters.type !== "Any" && p.type !== filters.type) return false;
 
-  return properties.filter((prop) => {
-    // Type
-    if (type && type !== "Any" && prop.type !== type) return false;
+    if (filters.bedrooms && p.bedrooms !== filters.bedrooms) return false;
 
-    // Bedrooms
-    if (bedrooms && prop.bedrooms !== bedrooms) return false;
+    if (filters.minPrice && p.price < filters.minPrice) return false;
+    if (filters.maxPrice && p.price > filters.maxPrice) return false;
 
-    // Min Price
-    if (minPrice && prop.price < minPrice) return false;
+    if (filters.tenure !== "Any" && p.tenure !== filters.tenure) return false;
 
-    // Max Price
-    if (maxPrice && prop.price > maxPrice) return false;
+    if (
+      filters.location &&
+      !p.location.toLowerCase().includes(filters.location.toLowerCase())
+    )
+      return false;
 
-    // Tenure
-    if (tenure && tenure !== "Any" && prop.tenure !== tenure) return false;
-
-    // Location keyword
-    if (location && !prop.location.toLowerCase().includes(location.toLowerCase())) return false;
-
-    // Added after date
-    if (addedAfter) {
-      const propDate = new Date(prop.added.year, new Date(`${prop.added.month} 1`).getMonth(), prop.added.day);
-      if (propDate < addedAfter) return false;
+    if (filters.addedAfter) {
+      const propDate = new Date(
+        p.added.year,
+        new Date(`${p.added.month} 1`).getMonth(),
+        p.added.day
+      );
+      if (propDate < filters.addedAfter) return false;
     }
 
     return true;
@@ -31,4 +29,3 @@ const filterProperties = (properties, filters) => {
 };
 
 export default filterProperties;
-

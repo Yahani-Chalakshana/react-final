@@ -1,67 +1,79 @@
-import React, { useState } from "react";
-import DropdownList from "react-widgets/DropdownList";
-import NumberPicker from "react-widgets/NumberPicker";
-import DatePicker from "react-widgets/DatePicker";
+import { useState } from "react";
+import { DropdownList, NumberPicker, DatePicker } from "react-widgets";
 import "react-widgets/styles.css";
 
 const SearchForm = ({ onFilter }) => {
   const types = ["Any", "House", "Flat"];
   const tenures = ["Any", "Freehold", "Leasehold"];
 
-  const [type, setType] = useState("Any");
-  const [bedrooms, setBedrooms] = useState(null);
-  const [minPrice, setMinPrice] = useState(null);
-  const [maxPrice, setMaxPrice] = useState(null);
-  const [tenure, setTenure] = useState("Any");
-  const [location, setLocation] = useState("");
-  const [addedAfter, setAddedAfter] = useState(null);
+  const [filters, setFilters] = useState({
+    type: "Any",
+    bedrooms: null,
+    minPrice: null,
+    maxPrice: null,
+    tenure: "Any",
+    location: "",
+    addedAfter: null,
+  });
 
-  const handleSubmit = (e) => {
+  const update = (key, value) => {
+    setFilters({ ...filters, [key]: value });
+  };
+
+  const submit = (e) => {
     e.preventDefault();
-    onFilter({ type, bedrooms, minPrice, maxPrice, tenure, location, addedAfter });
+    onFilter(filters);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Type:</label>
-        <DropdownList data={types} value={type} onChange={setType} />
-      </div>
+    <form onSubmit={submit}>
+      <DropdownList
+        data={types}
+        value={filters.type}
+        onChange={(v) => update("type", v)}
+        placeholder="Property Type"
+      />
 
-      <div>
-        <label>Bedrooms:</label>
-        <NumberPicker value={bedrooms} onChange={setBedrooms} min={1} max={10} />
-      </div>
+      <NumberPicker
+        placeholder="Bedrooms"
+        value={filters.bedrooms}
+        onChange={(v) => update("bedrooms", v)}
+        min={1}
+      />
 
-      <div>
-        <label>Min Price (£):</label>
-        <NumberPicker value={minPrice} onChange={setMinPrice} step={50000} min={0} />
-      </div>
+      <NumberPicker
+        placeholder="Min Price"
+        value={filters.minPrice}
+        onChange={(v) => update("minPrice", v)}
+        step={50000}
+      />
 
-      <div>
-        <label>Max Price (£):</label>
-        <NumberPicker value={maxPrice} onChange={setMaxPrice} step={50000} min={0} />
-      </div>
+      <NumberPicker
+        placeholder="Max Price"
+        value={filters.maxPrice}
+        onChange={(v) => update("maxPrice", v)}
+        step={50000}
+      />
 
-      <div>
-        <label>Tenure:</label>
-        <DropdownList data={tenures} value={tenure} onChange={setTenure} />
-      </div>
+      <DropdownList
+        data={tenures}
+        value={filters.tenure}
+        onChange={(v) => update("tenure", v)}
+        placeholder="Tenure"
+      />
 
-      <div>
-        <label>Location keyword:</label>
-        <input
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="Enter city, street or postcode"
-        />
-      </div>
+      <input
+        type="text"
+        placeholder="Location keyword"
+        value={filters.location}
+        onChange={(e) => update("location", e.target.value)}
+      />
 
-      <div>
-        <label>Added After:</label>
-        <DatePicker value={addedAfter} onChange={setAddedAfter} />
-      </div>
+      <DatePicker
+        value={filters.addedAfter}
+        onChange={(v) => update("addedAfter", v)}
+        placeholder="Added after"
+      />
 
       <button type="submit">Search</button>
     </form>
