@@ -1,68 +1,38 @@
 import { useState } from "react";
 import propertiesData from "../data/properties.json";
+
 import filterProperties from "../utils/filterProperties";
 
-import Header from "../components/Header"
-import Footer from "../components/Footer";
-import SearchForm from "../components/SearchForm";
-import ResultsSection from "../components/ResultsSection";
-import FavouritesPanel from "../components/FavouritesPanel";
+const SearchPage = () => {
+    const allProperties = propertiesData.properties;
+    
+    //State for filtered results
+    const [filteredProperties, setFilteredProperties] = useState(allProperties);
 
-import "./SearchPage.css";
+    // Handle search/filter submission
+    const handleSearch = (criteria) => {
+        const results = filterProperties(allProperties, criteria);
+        setFilteredProperties(results);
+    };
 
-export default function SearchPage() {
-  // All properties from JSON
-  const properties = propertiesData.properties;
-
-  // Search criteria state
-  const [criteria, setCriteria] = useState({
-    type: "Any",
-    minPrice: "",
-    maxPrice: "",
-    minBedrooms: "",
-    maxBedrooms: "",
-    dateFrom: null,
-    dateTo: null,
-    postcodeArea: ""
-  });
-
-  // Filtered results
-  const filteredProperties = filterProperties(properties, {
-    ...criteria,
-    minPrice: criteria.minPrice ? Number(criteria.minPrice) : null,
-    maxPrice: criteria.maxPrice ? Number(criteria.maxPrice) : null,
-    minBedrooms: criteria.minBedrooms ? Number(criteria.minBedrooms) : null,
-    maxBedrooms: criteria.maxBedrooms ? Number(criteria.maxBedrooms) : null
-  });
-
-  return (
-    <>
+    return (
+    <div className="search-page">
+      {/* Header */}
       <Header />
 
-      <main className="search-page">
-        <section className="search-layout">
-          
-          {/* Left: Search + Results */}
-          <div className="search-main">
-            <SearchForm
-              criteria={criteria}
-              setCriteria={setCriteria}
-            />
+      {/* Page title */}
+      <h1 className="page-title">Property Search</h1>
 
-            <ResultsSection
-              properties={filteredProperties}
-            />
-          </div>
+      {/* Search Form */}
+      <SearchForm onSearch={handleSearch} />
 
-          {/* Right: Favourites */}
-          <aside className="search-favourites">
-            <FavouritesPanel />
-          </aside>
+      {/* Results */}
+      <ResultsSection properties={filteredProperties} />
 
-        </section>
-      </main>
-
+      {/* Footer */}
       <Footer />
-    </>
+    </div>
   );
-}
+} 
+
+export default SearchPage;
