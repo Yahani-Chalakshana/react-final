@@ -4,14 +4,18 @@ import PropertyPage from "./pages/PropertyPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+import "./App.css";
+
 export default function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<SearchPage />} />
-        <Route path="/property/:id" element={<PropertyPage />} />
-      </Routes>
+      <main className="app-container">
+        <Routes>
+          <Route path="/" element={<SearchPage />} />
+          <Route path="/property/:id" element={<PropertyPage />} />
+        </Routes>
+      </main>
       <Footer />
     </BrowserRouter>
   );
