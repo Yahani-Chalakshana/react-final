@@ -1,46 +1,29 @@
-// filterProperties.js
-// Filters the properties array based on the search criteria
-// criteria: { type, minPrice, maxPrice, minBedrooms, maxBedrooms, postcode, dateFrom, dateTo }
+const filterProperties = (properties, filters) => {
+  const { type, bedrooms, minPrice, maxPrice, tenure, location, addedAfter } = filters;
 
-const filterProperties = (properties, criteria) => {
-  return properties.filter((property) => {
-    // Type filter
-    if (criteria.type && criteria.type !== "Any" && property.type !== criteria.type) {
-      return false;
-    }
+  return properties.filter((prop) => {
+    // Type
+    if (type && type !== "Any" && prop.type !== type) return false;
 
-    // Price filter
-    if (
-      (criteria.minPrice && property.price < criteria.minPrice) ||
-      (criteria.maxPrice && property.price > criteria.maxPrice)
-    ) {
-      return false;
-    }
+    // Bedrooms
+    if (bedrooms && prop.bedrooms !== bedrooms) return false;
 
-    // Bedrooms filter
-    if (
-      (criteria.minBedrooms && property.bedrooms < criteria.minBedrooms) ||
-      (criteria.maxBedrooms && property.bedrooms > criteria.maxBedrooms)
-    ) {
-      return false;
-    }
+    // Min Price
+    if (minPrice && prop.price < minPrice) return false;
 
-    // Postcode filter (first part only)
-    if (criteria.postcode) {
-        const postcodeMatch = property.location.match(/[A-Z]{1,2}\d{1,2}/);
-        if (!postcodeMatch || !postcodeMatch[0].startsWith(criteria.postcode.toUpperCase())) {
-            return false;
-        }
-    }
+    // Max Price
+    if (maxPrice && prop.price > maxPrice) return false;
 
-    // Date added filter
-    if (criteria.dateFrom || criteria.dateTo) {
-      const addedDate = new Date(
-        `${property.added.month} ${property.added.day}, ${property.added.year}`
-      );
+    // Tenure
+    if (tenure && tenure !== "Any" && prop.tenure !== tenure) return false;
 
-      if (criteria.dateFrom && addedDate < new Date(criteria.dateFrom)) return false;
-      if (criteria.dateTo && addedDate > new Date(criteria.dateTo)) return false;
+    // Location keyword
+    if (location && !prop.location.toLowerCase().includes(location.toLowerCase())) return false;
+
+    // Added after date
+    if (addedAfter) {
+      const propDate = new Date(prop.added.year, new Date(`${prop.added.month} 1`).getMonth(), prop.added.day);
+      if (propDate < addedAfter) return false;
     }
 
     return true;

@@ -1,48 +1,67 @@
-import { useState } from "react";
-import "./SearchForm.css";
+import React, { useState } from "react";
+import DropdownList from "react-widgets/DropdownList";
+import NumberPicker from "react-widgets/NumberPicker";
+import DatePicker from "react-widgets/DatePicker";
+import "react-widgets/styles.css";
 
-const SearchForm = ({ onSearch }) => {
-  const [criteria, setCriteria] = useState({
-    type: "Any",
-    minPrice: "",
-    maxPrice: "",
-    minBedrooms: "",
-    maxBedrooms: "",
-    postcode: "",
-    dateFrom: "",
-    dateTo: ""
-  });
+const SearchForm = ({ onFilter }) => {
+  const types = ["Any", "House", "Flat"];
+  const tenures = ["Any", "Freehold", "Leasehold"];
 
-  const handleChange = (e) => {
-    setCriteria({
-      ...criteria,
-      [e.target.name]: e.target.value
-    });
-  };
+  const [type, setType] = useState("Any");
+  const [bedrooms, setBedrooms] = useState(null);
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(null);
+  const [tenure, setTenure] = useState("Any");
+  const [location, setLocation] = useState("");
+  const [addedAfter, setAddedAfter] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(criteria);
+    onFilter({ type, bedrooms, minPrice, maxPrice, tenure, location, addedAfter });
   };
 
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
-      <select name="type" onChange={handleChange}>
-        <option value="Any">Any</option>
-        <option value="House">House</option>
-        <option value="Flat">Flat</option>
-      </select>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Type:</label>
+        <DropdownList data={types} value={type} onChange={setType} />
+      </div>
 
-      <input type="number" name="minPrice" placeholder="Min Price" onChange={handleChange} />
-      <input type="number" name="maxPrice" placeholder="Max Price" onChange={handleChange} />
+      <div>
+        <label>Bedrooms:</label>
+        <NumberPicker value={bedrooms} onChange={setBedrooms} min={1} max={10} />
+      </div>
 
-      <input type="number" name="minBedrooms" placeholder="Min Bedrooms" onChange={handleChange} />
-      <input type="number" name="maxBedrooms" placeholder="Max Bedrooms" onChange={handleChange} />
+      <div>
+        <label>Min Price (£):</label>
+        <NumberPicker value={minPrice} onChange={setMinPrice} step={50000} min={0} />
+      </div>
 
-      <input type="text" name="postcode" placeholder="Postcode area (e.g. BR)" onChange={handleChange} />
+      <div>
+        <label>Max Price (£):</label>
+        <NumberPicker value={maxPrice} onChange={setMaxPrice} step={50000} min={0} />
+      </div>
 
-      <input type="date" name="dateFrom" onChange={handleChange} />
-      <input type="date" name="dateTo" onChange={handleChange} />
+      <div>
+        <label>Tenure:</label>
+        <DropdownList data={tenures} value={tenure} onChange={setTenure} />
+      </div>
+
+      <div>
+        <label>Location keyword:</label>
+        <input
+          type="text"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="Enter city, street or postcode"
+        />
+      </div>
+
+      <div>
+        <label>Added After:</label>
+        <DatePicker value={addedAfter} onChange={setAddedAfter} />
+      </div>
 
       <button type="submit">Search</button>
     </form>

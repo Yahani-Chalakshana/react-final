@@ -8,10 +8,12 @@ import "./App.css";
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SearchPage />} />
-        <Route path="/property/:id" element={<PropertyPage />} />
-      </Routes>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<SearchPage />} />
+          <Route path="/property/:id" element={<PropertyPage />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

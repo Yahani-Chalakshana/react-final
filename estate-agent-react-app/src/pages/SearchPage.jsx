@@ -1,39 +1,37 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import propertiesData from "../data/properties.json";
 import filterProperties from "../utils/filterProperties";
-
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import SearchForm from "../components/SearchForm";
-import ResultsSection from "../components/ResultsSection";
-
-import "./SearchPage.css";
 
 const SearchPage = () => {
-    const allProperties = propertiesData.properties;
-    
-    //State for filtered results
-    const [filteredProperties, setFilteredProperties] = useState(allProperties);
+  const [results, setResults] = useState(propertiesData.properties);
 
-    // Handle search/filter submission
-    const handleSearch = (criteria) => {
-        const results = filterProperties(allProperties, criteria);
-        setFilteredProperties(results);
-    };
+  const handleFilter = (filters) => {
+    const filtered = filterProperties(propertiesData.properties, filters);
+    setResults(filtered);
+  };
 
-    return (
-        <div className="search-page">
-        <Header />
+  return (
+    <div>
+      <h1>Property Search</h1>
+      <SearchForm onFilter={handleFilter} />
 
-        <h1 className="page-title">Property Search</h1>
-
-        <SearchForm onSearch={handleSearch} />
-
-        <ResultsSection properties={filteredProperties} />
-
-        <Footer />
-        </div>
-    );
+      <h2>Results ({results.length})</h2>
+      {results.length === 0 ? (
+        <p>No properties match your criteria.</p>
+      ) : (
+        results.map((property) => (
+          <div key={property.id}>
+            <h3>{property.type}</h3>
+            <p>{property.location}</p>
+            <p>Bedrooms: {property.bedrooms}</p>
+            <p>Price: £{property.price}</p>
+          </div>
+        ))
+      )}
+    </div>
+  );
 };
 
 export default SearchPage;
+
