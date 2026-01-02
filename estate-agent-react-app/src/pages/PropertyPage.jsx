@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import propertiesData from "../data/properties.json";
+import Gallery from "../components/Gallery";
 
 const PropertyPage = () => {
   const { id } = useParams();
@@ -20,6 +21,7 @@ const PropertyPage = () => {
       <p>{property.description}</p>
 
       <h2>Images</h2>
+      <Gallery images={property.picture} />
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
         {property.picture.map((img, i) => (
           <img key={i} src={img} width="250" />
