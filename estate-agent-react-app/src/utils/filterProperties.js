@@ -1,31 +1,52 @@
-const filterProperties = (properties, filters) => {
-  return properties.filter((p) => {
-    if (filters.type !== "Any" && p.type !== filters.type) return false;
+export default function filterProperties(properties, filters) {
+  return properties.filter((property) => {
 
-    if (filters.bedrooms && p.bedrooms !== filters.bedrooms) return false;
+    // Type
+    if (filters.type !== "Any" && property.type !== filters.type) {
+      return false;
+    }
 
-    if (filters.minPrice && p.price < filters.minPrice) return false;
-    if (filters.maxPrice && p.price > filters.maxPrice) return false;
+    // Bedrooms (exact match if selected)
+    if (filters.bedrooms !== null && property.bedrooms !== filters.bedrooms) {
+      return false;
+    }
 
-    if (filters.tenure !== "Any" && p.tenure !== filters.tenure) return false;
+    // Min Price
+    if (filters.minPrice !== null && property.price < filters.minPrice) {
+      return false;
+    }
 
+    // Max Price
+    if (filters.maxPrice !== null && property.price > filters.maxPrice) {
+      return false;
+    }
+
+    // Tenure
+    if (filters.tenure !== "Any" && property.tenure !== filters.tenure) {
+      return false;
+    }
+
+    // Location (partial match)
     if (
       filters.location &&
-      !p.location.toLowerCase().includes(filters.location.toLowerCase())
-    )
+      !property.location.toLowerCase().includes(filters.location.toLowerCase())
+    ) {
       return false;
+    }
 
+    // Added After Date
     if (filters.addedAfter) {
       const propDate = new Date(
-        p.added.year,
-        new Date(`${p.added.month} 1`).getMonth(),
-        p.added.day
+        property.added.year,
+        new Date(`${property.added.month} 1`).getMonth(),
+        property.added.day
       );
-      if (propDate < filters.addedAfter) return false;
+
+      if (propDate < filters.addedAfter) {
+        return false;
+      }
     }
 
     return true;
   });
-};
-
-export default filterProperties;
+}
