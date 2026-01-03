@@ -1,25 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "./TabsSection.css";
 
-const TabsSection = ({ description, features, location }) => {
-  const tabs = ["Description", "Features", "Location"];
+const TabsSection = ({ description, features, location, floorPlan, lat, lng }) => {
+  const tabs = ["Description", "Features", "Location", "Floor Plan", "Map"];
   const [activeTab, setActiveTab] = useState("Description");
 
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div className="tabs-section">
       {/* Tabs */}
-      <div style={{ display: "flex", borderBottom: "2px solid #ccc" }}>
+      <div className="tabs-header">
         {tabs.map((tab) => (
           <button
             key={tab}
+            className={`tab-button ${activeTab === tab ? "active" : ""}`}
             onClick={() => setActiveTab(tab)}
-            style={{
-              padding: "10px 20px",
-              cursor: "pointer",
-              border: "none",
-              borderBottom: activeTab === tab ? "3px solid #007BFF" : "none",
-              backgroundColor: "transparent",
-              fontWeight: activeTab === tab ? "bold" : "normal",
-            }}
           >
             {tab}
           </button>
@@ -27,8 +21,11 @@ const TabsSection = ({ description, features, location }) => {
       </div>
 
       {/* Tab Content */}
-      <div style={{ padding: "15px", border: "1px solid #ccc", borderTop: "none" }}>
+      <div className="tabs-content">
+        {/* Description Tab */}
         {activeTab === "Description" && <p>{description}</p>}
+
+        {/* Features Tab */}
         {activeTab === "Features" && (
           <ul>
             {features && features.length > 0 ? (
@@ -38,7 +35,32 @@ const TabsSection = ({ description, features, location }) => {
             )}
           </ul>
         )}
+
+        {/* Location Tab */}
         {activeTab === "Location" && <p>{location}</p>}
+
+        {/* Floor Plan Tab */}
+        {activeTab === "Floor Plan" && (
+          floorPlan ? (
+            <img src={floorPlan} alt="Floor plan" className="floor-plan-image" />
+          ) : (
+            <p>Floor plan not available.</p>
+          )
+        )}
+
+        {/* Map Tab */}
+        {activeTab === "Map" && (
+          (lat && lng) ? (
+            <iframe
+              title="Property location map"
+              src={`https://www.google.com/maps?q=${lat},${lng}&hl=en&z=15&output=embed`}
+              className="map-frame"
+              loading="lazy"
+            ></iframe>
+          ) : (
+            <p>Map location not available.</p>
+          )
+        )}
       </div>
     </div>
   );

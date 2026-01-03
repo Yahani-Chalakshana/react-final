@@ -1,0 +1,75 @@
+/* Wrapper */
+.tabs-section {
+  margin-top: 15px;
+}
+
+/* Tabs header */
+.tabs-header {
+  display: flex;
+  border-bottom: 2px solid #ccc;
+}
+
+/* Tab buttons */
+.tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-weight: normal;
+  color: #13136f;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.tab-button:hover {
+  color: #007bff;
+}
+
+/* Active tab */
+.tab-button.active {
+  font-weight: bold;
+  border-bottom:3px solid #007bff;
+  margin-bottom: 8px;
+  color: #007bff;
+}
+
+/* Content area */
+.tabs-content {
+  padding: 15px;
+  border: 1px solid #01011d;
+  border-top: none;
+  color: #070794;
+  font-size: 1rem;
+}
+
+/* Features list */
+.tabs-content ul {
+  padding-left: 20px;
+}
+
+.tabs-content li {
+  margin-bottom: 6px;
+}
+
+.floor-plan-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Google map */
+.map-frame {
+  width: 100%;
+  height: 350px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Responsive – unchanged behavior */
+@media (max-width: 768px) {
+  .tab-button {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
+}

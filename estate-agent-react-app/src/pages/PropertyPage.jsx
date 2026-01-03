@@ -13,12 +13,17 @@ const PropertyPage = ({ favourites, setFavourites }) => {
   const property = propertiesData.properties.find((p) => p.id === id);
   if (!property) return <p>Property not found</p>;
 
-  const features = property.features || [
-    `Type: ${property.type}`,
-    `Bedrooms: ${property.bedrooms}`,
-    `Price: £${property.price}`,
-    `Tenure: ${property.tenure}`,
-  ];
+  // Fallback for features if property.features is missing
+  const propertyFeatures =
+    property.features && property.features.length > 0
+      ? property.features
+      : [
+          `Type: ${property.type}`,
+          `Bedrooms: ${property.bedrooms}`,
+          `Price: £${property.price.toLocaleString()}`,
+          `Tenure: ${property.tenure}`,
+        ];
+
 
   return (
     <div className="property-page">
@@ -41,8 +46,11 @@ const PropertyPage = ({ favourites, setFavourites }) => {
 
       <TabsSection
         description={property.description}
-        features={features}
+        features={propertyFeatures}
         location={property.location}
+        floorPlan={property.floorPlan}
+        lat={property.lat}
+        lng={property.lng}
       />
 
       <FavouriteButton
