@@ -1,4 +1,3 @@
-import React from "react";
 import "./FavouriteButton.css";
 
 const FavouriteButton = ({ property, favourites, setFavourites }) => {
