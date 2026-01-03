@@ -3,6 +3,7 @@ import propertiesData from "../data/properties.json";
 import Gallery from "../components/Gallery";
 import TabsSection from "../components/TabsSection";
 import FavouriteButton from "../components/FavouriteButton";
+import "./PropertyPage.css";
 
 const PropertyPage = ({ favourites, setFavourites }) => {
   const { id } = useParams();
@@ -20,15 +21,16 @@ const PropertyPage = ({ favourites, setFavourites }) => {
   ];
 
   return (
-    <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
+    <div className="property-page">
       <Link
         to={fromAllProperties ? "/all-properties" : "/"}
-        style={{ display: "inline-block", marginBottom: "20px" }}
+        className="back-link"
       >
         ← Back
       </Link>
 
       <h1>{property.type}</h1>
+
       <p><strong>Location:</strong> {property.location}</p>
       <p><strong>Bedrooms:</strong> {property.bedrooms}</p>
       <p><strong>Price:</strong> £{property.price.toLocaleString()}</p>
