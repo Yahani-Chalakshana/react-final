@@ -14,6 +14,12 @@ const SearchPage = ({ favourites, setFavourites }) => {
     setResults(filterProperties(propertiesData.properties, filters));
   };
 
+  // Drag start for search results → FavouritesPanel
+  const handleDragStart = (e, propertyId) => {
+    e.dataTransfer.setData("property-id", propertyId);
+    e.dataTransfer.effectAllowed = "move";
+  };
+
   return (
     <div className="search-page">
       {/* Left Section: Search + Results */}
@@ -24,7 +30,12 @@ const SearchPage = ({ favourites, setFavourites }) => {
         {results.length === 0 && <p>No properties found.</p>}
 
         {results.map((property) => (
-          <div key={property.id} className="property-card">
+          <div
+            key={property.id}
+            className="property-card"
+            draggable
+            onDragStart={(e) => handleDragStart(e, property.id)}
+          >
             <h3>{property.type}</h3>
             <p>{property.location}</p>
             <p>Bedrooms: {property.bedrooms}</p>
@@ -32,7 +43,7 @@ const SearchPage = ({ favourites, setFavourites }) => {
 
             <Link
               to={`/property/${property.id}`}
-              state={{ fromAllProperties: false }} // Home → specific property
+              state={{ fromAllProperties: false }}
             >
               <button>View Details</button>
             </Link>

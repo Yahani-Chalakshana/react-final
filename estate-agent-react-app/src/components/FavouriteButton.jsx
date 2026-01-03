@@ -1,5 +1,3 @@
-import React from "react";
-
 const FavouriteButton = ({ property, favourites, setFavourites }) => {
   const isFav = favourites.some((f) => f.id === property.id);
 
