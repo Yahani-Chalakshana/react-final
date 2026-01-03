@@ -1,0 +1,70 @@
+.property-card {
+  border: 1.8px solid #020c45;
+  border-radius: 16px;
+  padding: 15px;
+  margin: 12px 0;
+  background-color: #dbe5f5;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.property-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.property-title {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  color: #0a0a3f;
+}
+
+.property-location {
+  font-size: 1rem;
+  color: #0101a8;
+  margin-bottom: 6px;
+}
+
+.property-info {
+  font-size: 0.95rem;
+  color: #070794;
+  margin-bottom: 4px;
+}
+
+.property-price {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #05053a;
+  margin-bottom: 10px;
+}
+
+.property-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.view-details-btn {
+  background-color: #1f7bdf;
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+  background-color: #022b5a;
+}
+
+/* Responsive – behavior unchanged */
+@media (max-width: 768px) {
+  .property-card {
+    padding: 12px;
+  }
+
+  .property-title {
+    font-size: 1.3rem;
+  }
+}
