@@ -1,13 +1,15 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import propertiesData from "../data/properties.json";
 import Gallery from "../components/Gallery";
 import TabsSection from "../components/TabsSection";
 import FavouriteButton from "../components/FavouriteButton";
 
-const PropertyPage = ({ favourites, setFavourites }) => { // ← receive props
+const PropertyPage = ({ favourites, setFavourites }) => {
   const { id } = useParams();
-  const property = propertiesData.properties.find((p) => p.id === id);
+  const location = useLocation();
+  const fromAllProperties = location.state?.fromAllProperties || false;
 
+  const property = propertiesData.properties.find((p) => p.id === id);
   if (!property) return <p>Property not found</p>;
 
   const features = property.features || [
@@ -19,8 +21,11 @@ const PropertyPage = ({ favourites, setFavourites }) => { // ← receive props
 
   return (
     <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
-      <Link to="/" style={{ display: "inline-block", marginBottom: "20px" }}>
-        ← Back to Search
+      <Link
+        to={fromAllProperties ? "/all-properties" : "/"}
+        style={{ display: "inline-block", marginBottom: "20px" }}
+      >
+        ← Back
       </Link>
 
       <h1>{property.type}</h1>
@@ -31,14 +36,13 @@ const PropertyPage = ({ favourites, setFavourites }) => { // ← receive props
 
       <h2>Images</h2>
       <Gallery images={property.picture} />
-      
+
       <TabsSection
         description={property.description}
         features={features}
         location={property.location}
       />
 
-      {/* Favourite button */}
       <FavouriteButton
         property={property}
         favourites={favourites}

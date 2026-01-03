@@ -1,0 +1,137 @@
+.footer {
+  background-color: #d1e1f0;
+  color: #08146e;
+  padding: 10px 10px 10px 10px; /* increased top/bottom padding */
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 10px;  /* extra spacing inside container */
+  padding-bottom: 40px;
+}
+
+/* Left Section */
+.footer-left h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.footer-left p {
+  font-size: 1rem;
+  line-height: 1.8;  /* increased line-height */
+  max-width: 300px;
+  text-align: center;
+}
+
+/* Middle Section - Centered */
+.footer-middle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.footer-middle h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.footer-middle ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;  /* more spacing between links */
+}
+
+.footer-middle ul li a {
+  text-decoration: none;
+  color: #02027c;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.footer-middle ul li a:hover {
+  color: #007bff;
+}
+
+/* Right Section */
+.footer-right {
+  text-align: center;
+}
+
+.footer-right h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.footer-right .social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer-right .social-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #02027c;
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.footer-right .social-icons a:hover {
+  background-color: #007bff;
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  margin-top: 40px; /* more space above bottom text */
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #bbccd7;
+  padding-top: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .footer-left p {
+    max-width: 100%;
+  }
+
+  .footer-middle {
+    position: static;
+    transform: none;
+  }
+
+  .footer-right .social-icons {
+    justify-content: center;
+  }
+}

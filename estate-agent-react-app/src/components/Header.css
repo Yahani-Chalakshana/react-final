@@ -1,0 +1,85 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #bbccd7;
+  background-color: #d1e1f0;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.header-left .logo-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-icon {
+  font-size: 5rem;
+  color: #077dfb;
+}
+
+.logo-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #08146e;
+}
+
+.header-nav {
+  display: flex;
+  gap: 50px;
+  font-size: 1.2rem;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #02027c;
+  font-weight: 500;
+}
+
+.header-nav a.active {
+  color: #007bff;
+}
+
+/* Hamburger button hidden on desktop */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #011768;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .header-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    background-color: #dce8f4;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+    border-top: 1px solid #ccc;
+    z-index: 1000;
+  }
+
+  .header-nav.open {
+    max-height: 250px; /* adjust as needed */
+  }
+
+  .header-nav a {
+    padding: 12px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

@@ -12,17 +12,14 @@ const SearchPage = ({ favourites, setFavourites }) => {
   const handleFilter = (filters) => {
     setResults(filterProperties(propertiesData.properties, filters));
   };
-
+  
   return (
     <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
-      {/* Left side: Search + Results */}
+      {/* Left: Search + Results */}
       <div style={{ flex: 3 }}>
         <h1>Property Search</h1>
-
-        {/* Search form */}
         <SearchForm onFilter={handleFilter} />
 
-        {/* Results */}
         {results.length === 0 && <p>No properties found.</p>}
 
         {results.map((property) => (
@@ -38,14 +35,15 @@ const SearchPage = ({ favourites, setFavourites }) => {
             <h3>{property.type}</h3>
             <p>{property.location}</p>
             <p>Bedrooms: {property.bedrooms}</p>
-            <p>£{property.price.toLocaleString()}</p>
+            <p>£{property.price}</p>
 
-            {/* View Details button */}
-            <Link to={`/property/${property.id}`}>
-              <button style={{ marginRight: "10px" }}>View Details</button>
+            <Link
+              to={`/property/${property.id}`}
+              state={{ fromAllProperties: false }} // Home → specific
+            >
+              <button>View Details</button>
             </Link>
 
-            {/* Favourite button */}
             <FavouriteButton
               property={property}
               favourites={favourites}
@@ -55,7 +53,7 @@ const SearchPage = ({ favourites, setFavourites }) => {
         ))}
       </div>
 
-      {/* Right side: Favourites Panel only */}
+      {/* Right: Favourites */}
       <div style={{ flex: 1, borderLeft: "1px solid #ccc", paddingLeft: "20px" }}>
         <FavouritesPanel favourites={favourites} setFavourites={setFavourites} />
       </div>
