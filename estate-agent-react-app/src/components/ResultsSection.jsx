@@ -1,32 +1,23 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import FavouriteButton from "./FavouriteButton";
+import "./ResultsSection.css";
 
 const ResultsSection = ({ results, favourites, setFavourites }) => {
-  return (
-    <div style={{ flex: 2 }}>
-      {results.length === 0 && <p>No properties found.</p>}
+  if (results.length === 0) return <p>No properties found.</p>;
 
+  return (
+    <div className="results-section">
       {results.map((property) => (
-        <div
-          key={property.id}
-          style={{
-            border: "1px solid #ccc",
-            marginBottom: "10px",
-            padding: "10px",
-            borderRadius: "5px",
-          }}
-        >
+        <div key={property.id} className="property-card">
           <h3>{property.type}</h3>
           <p>{property.location}</p>
           <p>Bedrooms: {property.bedrooms}</p>
-          <p>£{property.price}</p>
+          <p>£{property.price.toLocaleString()}</p>
 
           <Link to={`/property/${property.id}`}>
-            <button style={{ marginRight: "10px" }}>View Details</button>
+            <button>View Details</button>
           </Link>
 
-          {/* Favourite button */}
           <FavouriteButton
             property={property}
             favourites={favourites}

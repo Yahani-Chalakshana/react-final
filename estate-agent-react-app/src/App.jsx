@@ -9,41 +9,26 @@ import { useState } from "react";
 export default function App() {
   const [favourites, setFavourites] = useState([]);
 
-return (
+  return (
     <BrowserRouter>
       <Header />
       <main className="app-container">
         <Routes>
           <Route
             path="/"
-            element={
-              <SearchPage
-                favourites={favourites}
-                setFavourites={setFavourites}
-              />
-            }
+            element={<SearchPage favourites={favourites} setFavourites={setFavourites} />}
           />
           <Route
             path="/all-properties"
-            element={
-              <AllPropertiesPage
-                favourites={favourites}
-                setFavourites={setFavourites}
-              />
-            }
+            element={<AllPropertiesPage favourites={favourites} setFavourites={setFavourites} />}
           />
           <Route
             path="/property/:id"
-            element={
-              <PropertyPage
-                favourites={favourites}
-                setFavourites={setFavourites}
-              />
-            }
+            element={<PropertyPage favourites={favourites} setFavourites={setFavourites} />}
           />
         </Routes>
       </main>
       <Footer />
     </BrowserRouter>
-  );  
+  );
 }

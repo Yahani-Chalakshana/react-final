@@ -1,3 +1,6 @@
+import React from "react";
+import "./FavouriteButton.css";
+
 const FavouriteButton = ({ property, favourites, setFavourites }) => {
   const isFav = favourites.some((f) => f.id === property.id);
 
@@ -10,10 +13,14 @@ const FavouriteButton = ({ property, favourites, setFavourites }) => {
   };
 
   return (
-    <button onClick={toggleFavourite}>
+    <button
+      className={`favourite-btn ${isFav ? "fav-active" : ""}`}
+      onClick={toggleFavourite}
+    >
       {isFav ? "Remove from Favourites" : "Add to Favourites"}
     </button>
   );
 };
 
 export default FavouriteButton;
+

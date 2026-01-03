@@ -1,12 +1,12 @@
 .search-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
   padding: 15px;
-  margin-bottom: 20px;
-  background-color: #eef3fb;
+  margin-bottom: 50px;
+  background-color: #e4edfb;
   border-radius: 14px;
-  border: 1.5px solid #004bba;
+  border: 2px solid #012b69;
 }
 
 /* Each field full width */
@@ -19,19 +19,19 @@
   width: 100%;
   padding: 8px 10px;
   border-radius: 6px;
-  border: 1px solid #004bba;
-  font-size: 0.95rem;
+  border: 1.5px solid #c8c8c8;
+  font-size: 1rem;
 }
 
 /* Search button */
 .search-btn {
-  background-color: #1f7bdf;
+  background-color: #0764c8;
   color: #ffffff;
   border: none;
   padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   transition: background-color 0.3s ease;
   margin-top: 10px;

@@ -1,24 +1,19 @@
 import { Link } from "react-router-dom";
 import propertiesData from "../data/properties.json";
 import FavouriteButton from "../components/FavouriteButton";
+import "./AllPropertiesPage.css";
 
 const AllPropertiesPage = ({ favourites, setFavourites }) => {
   return (
-    <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
+    <div className="all-properties-page">
       <h1>All Properties</h1>
       {propertiesData.properties.map((property) => (
-        <div
-          key={property.id}
-          style={{ border: "1px solid #ccc", margin: 10, padding: 10 }}
-        >
+        <div key={property.id} className="property-card-wrapper">
           <h3>{property.type}</h3>
           <p>{property.location}</p>
           <p>Bedrooms: {property.bedrooms}</p>
-          <p>£{property.price}</p>
-          <Link
-            to={`/property/${property.id}`}
-            state={{ fromAllProperties: true }} // came from all properties
-          >
+          <p>£{property.price.toLocaleString()}</p>
+          <Link to={`/property/${property.id}`} state={{ fromAllProperties: true }}>
             <button>View Details</button>
           </Link>
           <FavouriteButton

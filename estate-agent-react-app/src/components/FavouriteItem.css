@@ -1,0 +1,53 @@
+.favourite-item {
+  border: 1px solid #ccc;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f0f4ff;
+  cursor: grab;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.favourite-item:active {
+  cursor: grabbing;
+}
+
+.favourite-item h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  color: #0a0a3f;
+}
+
+.favourite-item p {
+  margin: 2px 0;
+  font-size: 0.95rem;
+  color: #000094;
+}
+
+.favourite-item a {
+  display: inline-block;
+  margin-top: 5px;
+  text-decoration: none;
+  color: #04007e;
+  font-weight: 500;
+}
+
+.favourite-item a:hover {
+  text-decoration: underline;
+}
+
+.favourite-item button {
+  background-color: #2d53dd;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.favourite-item button:hover {
+  background-color: #160078;
+}

@@ -1,0 +1,47 @@
+.results-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.property-card {
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #f7f9fc;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.property-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.property-card h3 {
+  margin: 0 0 6px 0;
+  color: #0a0a3f;
+  font-size: 1.2rem;
+}
+
+.property-card p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #0101a8;
+}
+
+.property-card button {
+  background-color: #1f7bdf;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.property-card button:hover {
+  background-color: #022b5a;
+}

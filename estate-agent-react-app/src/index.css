@@ -16,6 +16,15 @@ a {
   color: #1a73e8;
 }
 
-a:hover{
+a:hover {
   text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: inherit;
 }
