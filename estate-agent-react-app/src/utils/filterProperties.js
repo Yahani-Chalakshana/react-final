@@ -28,7 +28,7 @@ export default function filterProperties(properties, filters) {
       return false;
     }
 
-    // Location (partial match)
+    // Location filter (case-insensitive partial match)
     if (
       filters.location &&
       !property.location.toLowerCase().includes(filters.location.toLowerCase())
@@ -36,15 +36,16 @@ export default function filterProperties(properties, filters) {
       return false;
     }
 
-    // Added After Date
+    // Added After Date filter
     if (filters.addedAfter) {
       const propertyDate = parseAddedDate(property.added);
 
       if (propertyDate && propertyDate < filters.addedAfter) {
-        return false;
+        return false; // Exclude properties added before the selected date
       }
     }
 
+    // If property passes all filters, include it
     return true;
   });
 }

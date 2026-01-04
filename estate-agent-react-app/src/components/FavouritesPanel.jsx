@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState } from "react"; // Import React hook to manage component state
 import FavouriteItem from "./FavouriteItem";
 import propertiesData from "../data/properties.json";
 import "./FavouritesPanel.css";
 
 const FavouritesPanel = ({ favourites, setFavourites }) => {
-  const [isDragOver, setIsDragOver] = useState(false);
+  const [isDragOver, setIsDragOver] = useState(false); // Track if item is being dragged over panel
 
-  // Drop from search results → add to favourites
+  // Drop from search results - add to favourites
   const handleDrop = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default browser behavior
     const propertyId = e.dataTransfer.getData("property-id");
-    const property = propertiesData.properties.find((p) => p.id === propertyId);
+    const property = propertiesData.properties.find((p) => p.id === propertyId); // Find property in JSON
 
     if (property && !favourites.some((f) => f.id === property.id)) {
-      setFavourites([...favourites, property]);
+      setFavourites([...favourites, property]); // Add property if not already in favourites
     }
     setIsDragOver(false);
   };
@@ -24,7 +24,7 @@ const FavouritesPanel = ({ favourites, setFavourites }) => {
 
   return (
     <div
-      className={`favourites-panel ${isDragOver ? "drag-over" : ""}`}
+      className={`favourites-panel ${isDragOver ? "drag-over" : ""}`} // Add class when dragging over
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       onDragEnter={handleDragEnter}
@@ -34,7 +34,7 @@ const FavouritesPanel = ({ favourites, setFavourites }) => {
 
       {favourites.length > 0 && (
         <button
-          onClick={() => setFavourites([])}
+          onClick={() => setFavourites([])} // Clear all favourites
           style={{ marginBottom: "10px" }}
         >
           Clear Favourites
@@ -45,10 +45,10 @@ const FavouritesPanel = ({ favourites, setFavourites }) => {
 
       {favourites.map((property) => (
         <FavouriteItem
-          key={property.id}
+          key={property.id} // Unique key for React
           property={property}
           favourites={favourites}
-          setFavourites={setFavourites}
+          setFavourites={setFavourites} // Function to update favourites
         />
       ))}
     </div>

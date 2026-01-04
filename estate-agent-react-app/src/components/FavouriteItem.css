@@ -1,3 +1,4 @@
+/* Container for each favourite property item */
 .favourite-item {
   border: 1px solid #ccc;
   margin: 5px 0;
@@ -9,7 +10,7 @@
 }
 
 .favourite-item:active {
-  cursor: grabbing;
+  cursor: grabbing; /* Cursor changes when dragging */
 }
 
 .favourite-item h4 {
@@ -24,8 +25,9 @@
   color: #000094;
 }
 
+/* Link to view property details */
 .favourite-item a {
-  display: inline-block;
+  display: inline-block; /* Ensure link behaves like a block for spacing */
   margin-top: 5px;
   text-decoration: none;
   color: #04007e;
@@ -36,6 +38,7 @@
   text-decoration: underline;
 }
 
+/* Button inside favourite item - remove button */
 .favourite-item button {
   background-color: #2d53dd;
   color: #ffffff;

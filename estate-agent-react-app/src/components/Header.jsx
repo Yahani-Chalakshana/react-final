@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FaBuilding, FaBars, FaTimes } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom"; // Routing & current path
+import { FaBuilding, FaBars, FaTimes } from "react-icons/fa"; 
 import "./Header.css";
 
 const Header = () => {
-  const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation(); // Get current URL path
+  const [menuOpen, setMenuOpen] = useState(false); // State for hamburger menu
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen(!menuOpen); // Open/close menu
 
   return (
     <header className="header">
@@ -20,14 +20,14 @@ const Header = () => {
 
       {/* Hamburger button */}
       <div className="hamburger" onClick={toggleMenu}>
-        {menuOpen ? <FaTimes /> : <FaBars />}
+        {menuOpen ? <FaTimes /> : <FaBars />} {/* Toggle icon */}
       </div>
 
       {/* Nav links */}
-      <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
+      <nav className={`header-nav ${menuOpen ? "open" : ""}`}> {/* Add 'open' class if menu is open */}
         <Link
           to="/"
-          className={location.pathname === "/" ? "active" : ""}
+          className={location.pathname === "/" ? "active" : ""} // Highlight current page
           onClick={() => setMenuOpen(false)}
         >
           Home
@@ -35,7 +35,7 @@ const Header = () => {
         <Link
           to="/all-properties"
           className={location.pathname === "/all-properties" ? "active" : ""}
-          onClick={() => setMenuOpen(false)}
+          onClick={() => setMenuOpen(false)} // Close menu on click
         >
           Property Details
         </Link>

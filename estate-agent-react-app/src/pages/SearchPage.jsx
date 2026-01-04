@@ -8,16 +8,18 @@ import FavouritesPanel from "../components/FavouritesPanel";
 import "./SearchPage.css";
 
 const SearchPage = ({ favourites, setFavourites }) => {
+  // State to store filtered search results, initially all properties
   const [results, setResults] = useState(propertiesData.properties);
 
   const handleFilter = (filters) => {
+    // Update results based on filters
     setResults(filterProperties(propertiesData.properties, filters));
   };
 
-  // Drag start for search results → FavouritesPanel
+  // Allow drag-and-drop from search results to favourites panel
   const handleDragStart = (e, propertyId) => {
     e.dataTransfer.setData("property-id", propertyId);
-    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.effectAllowed = "move"; // Visual cue for drag
   };
 
   return (
@@ -25,10 +27,13 @@ const SearchPage = ({ favourites, setFavourites }) => {
       {/* Left Section: Search + Results */}
       <div className="search-left">
         <h1>Property Search</h1>
+
+        {/* Search form */}
         <SearchForm onFilter={handleFilter} />
 
         {results.length === 0 && <p>No properties found.</p>}
 
+        {/* Render search results */}
         {results.map((property) => (
           <div
             key={property.id}
@@ -42,6 +47,7 @@ const SearchPage = ({ favourites, setFavourites }) => {
             <p>Bedrooms: {property.bedrooms}</p>
             <p>£{property.price.toLocaleString()}</p>
 
+            {/* Link to property detail page */}
             <Link
               to={`/property/${property.id}`}
               state={{ fromAllProperties: false }}

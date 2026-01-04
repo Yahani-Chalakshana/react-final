@@ -1,10 +1,10 @@
 import "./Footer.css";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa"; // Import social media icons
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-container">
+      <div className="footer-container"> {/* Inner flex container for layout */}
         {/* Left Section */}
         <div className="footer-left">
           <h3>Estate Agent</h3>
@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-bottom">
+      <div className="footer-bottom"> {/* Bottom copyright text */}
         <p>© 2026 Estate Agent App. All rights reserved.</p>
       </div>
     </footer>

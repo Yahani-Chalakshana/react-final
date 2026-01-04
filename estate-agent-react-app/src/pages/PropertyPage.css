@@ -56,7 +56,7 @@
   margin-top: 15px;
 }
 
-/* Responsive – layout unchanged */
+/* Responsive */
 @media (max-width: 768px) {
   .property-page {
     padding: 15px;

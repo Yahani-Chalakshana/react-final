@@ -1,4 +1,4 @@
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom"; // Router hooks
 import propertiesData from "../data/properties.json";
 import Gallery from "../components/Gallery";
 import TabsSection from "../components/TabsSection";
@@ -7,10 +7,10 @@ import "./PropertyPage.css";
 
 const PropertyPage = ({ favourites, setFavourites }) => {
   const { id } = useParams();
-  const location = useLocation();
-  const fromAllProperties = location.state?.fromAllProperties || false;
+  const location = useLocation(); // Get navigation state
+  const fromAllProperties = location.state?.fromAllProperties || false; // Check if navigated from All Properties page
 
-  const property = propertiesData.properties.find((p) => p.id === id);
+  const property = propertiesData.properties.find((p) => p.id === id); // Find the property by ID
   if (!property) return <p>Property not found</p>;
 
   // Fallback for features if property.features is missing
@@ -24,17 +24,16 @@ const PropertyPage = ({ favourites, setFavourites }) => {
           `Tenure: ${property.tenure}`,
         ];
 
-
   return (
     <div className="property-page">
       <Link
-        to={fromAllProperties ? "/all-properties" : "/"}
+        to={fromAllProperties ? "/all-properties" : "/"} // Back to previous page
         className="back-link"
       >
         ← Back
       </Link>
 
-      <h1>{property.type}</h1>
+      <h1>{property.type}</h1> {/* Property title */}
 
       <p><strong>Location:</strong> {property.location}</p>
       <p><strong>Bedrooms:</strong> {property.bedrooms}</p>
@@ -42,8 +41,9 @@ const PropertyPage = ({ favourites, setFavourites }) => {
       <p><strong>Tenure:</strong> {property.tenure}</p>
 
       <h2>Images</h2>
-      <Gallery images={property.picture} />
+      <Gallery images={property.picture} /> {/* Gallery of images */}
 
+      {/* Tabs for description, features, floor plan, map */}
       <TabsSection
         description={property.description}
         features={propertyFeatures}
@@ -53,6 +53,7 @@ const PropertyPage = ({ favourites, setFavourites }) => {
         lng={property.lng}
       />
 
+      {/* Favourite button */}
       <FavouriteButton
         property={property}
         favourites={favourites}

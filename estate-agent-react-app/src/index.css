@@ -11,6 +11,7 @@ body {
   line-height: 1.6;
 }
 
+/* Links */
 a {
   text-decoration: none;
   color: #1a73e8;
@@ -25,6 +26,7 @@ button {
   cursor: pointer;
 }
 
+/* Inputs, selects, and textareas inherit font for consistency */
 input, select, textarea {
   font-family: inherit;
 }

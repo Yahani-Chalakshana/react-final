@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./TabsSection.css";
 
 const TabsSection = ({ description, features, location, floorPlan, lat, lng }) => {
-  const tabs = ["Description", "Features", "Location", "Floor Plan", "Map"];
-  const [activeTab, setActiveTab] = useState("Description");
+  const tabs = ["Description", "Features", "Location", "Floor Plan", "Map"]; // list of tabs
+  const [activeTab, setActiveTab] = useState("Description"); // track currently active tab
 
   return (
     <div className="tabs-section">
@@ -12,8 +12,8 @@ const TabsSection = ({ description, features, location, floorPlan, lat, lng }) =
         {tabs.map((tab) => (
           <button
             key={tab}
-            className={`tab-button ${activeTab === tab ? "active" : ""}`}
-            onClick={() => setActiveTab(tab)}
+            className={`tab-button ${activeTab === tab ? "active" : ""}`} // add 'active' class if selected
+            onClick={() => setActiveTab(tab)} // switch active tab on click
           >
             {tab}
           </button>
@@ -29,9 +29,9 @@ const TabsSection = ({ description, features, location, floorPlan, lat, lng }) =
         {activeTab === "Features" && (
           <ul>
             {features && features.length > 0 ? (
-              features.map((feat, i) => <li key={i}>{feat}</li>)
+              features.map((feat, i) => <li key={i}>{feat}</li>) // list each feature
             ) : (
-              <li>No additional features listed.</li>
+              <li>No additional features listed.</li> // fallback text
             )}
           </ul>
         )}
@@ -40,7 +40,7 @@ const TabsSection = ({ description, features, location, floorPlan, lat, lng }) =
         {activeTab === "Location" && <p>{location}</p>}
 
         {/* Floor Plan Tab */}
-        {activeTab === "Floor Plan" && (
+        {activeTab === "Floor Plan" && ( // floor plan content
           floorPlan ? (
             <img src={floorPlan} alt="Floor plan" className="floor-plan-image" />
           ) : (
@@ -52,10 +52,10 @@ const TabsSection = ({ description, features, location, floorPlan, lat, lng }) =
         {activeTab === "Map" && (
           (lat && lng) ? (
             <iframe
-              title="Property location map"
-              src={`https://www.google.com/maps?q=${lat},${lng}&hl=en&z=15&output=embed`}
+              title="Property location map" // accessibility
+              src={`https://www.google.com/maps?q=${lat},${lng}&hl=en&z=15&output=embed`} // embed map
               className="map-frame"
-              loading="lazy"
+              loading="lazy" // lazy load for performance
             ></iframe>
           ) : (
             <p>Map location not available.</p>

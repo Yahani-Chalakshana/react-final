@@ -6,9 +6,10 @@
   border-bottom: 1px solid #bbccd7;
   background-color: #d1e1f0;
   flex-wrap: wrap;
-  position: relative;
+  position: relative; /* For positioning nav dropdown */
 }
 
+/* Left section: logo */
 .header-left .logo-section {
   display: flex;
   align-items: center;
@@ -26,6 +27,7 @@
   color: #08146e;
 }
 
+/* Navigation menu */
 .header-nav {
   display: flex;
   gap: 50px;
@@ -44,7 +46,7 @@
 
 /* Hamburger button hidden on desktop */
 .hamburger {
-  display: none;
+  display: none; /* Hidden by default */
   font-size: 1.5rem;
   cursor: pointer;
   color: #011768;
@@ -53,11 +55,11 @@
 /* Responsive */
 @media (max-width: 768px) {
   .hamburger {
-    display: block;
+    display: block; /* Show hamburger */
   }
 
   .header-nav {
-    position: absolute;
+    position: absolute; /* Dropdown positioning */
     top: 100%;
     left: 0;
     width: 100%;
@@ -70,16 +72,16 @@
     max-height: 0;
     transition: max-height 0.3s ease;
     border-top: 1px solid #ccc;
-    z-index: 1000;
+    z-index: 1000; /* Above other content */
   }
 
   .header-nav.open {
-    max-height: 250px; /* adjust as needed */
+    max-height: 250px;
   }
 
   .header-nav a {
     padding: 12px 20px;
     width: 100%;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Include padding in width */
   }
 }

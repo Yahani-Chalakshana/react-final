@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./Gallery.css";
 
 const Gallery = ({ images }) => {
-  const displayImages = images.slice(0, 6);
-  const [mainImage, setMainImage] = useState(displayImages[0]);
+  const displayImages = images.slice(0, 6); // Limit to first 6 images
+  const [mainImage, setMainImage] = useState(displayImages[0]); // State for main displayed image
 
   return (
     <div className="gallery">
@@ -18,9 +18,9 @@ const Gallery = ({ images }) => {
           <img
             key={index}
             src={img}
-            alt={`Thumbnail ${index + 1}`}
-            className={mainImage === img ? "active" : ""}
-            onClick={() => setMainImage(img)}
+            alt={`Thumbnail ${index + 1}`} // Alt text for accessibility
+            className={mainImage === img ? "active" : ""} // Highlight active thumbnail
+            onClick={() => setMainImage(img)} // Update main image on click
           />
         ))}
       </div>

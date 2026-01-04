@@ -8,7 +8,7 @@
 
 /* Left section: search + results */
 .search-left {
-  flex: 3;
+  flex: 3; /* Take up 3 parts of available space */
   min-width: 300px;
 }
 
@@ -71,7 +71,7 @@
 
 /* Right section: favourites panel */
 .search-right {
-  flex: 1;
+  flex: 1; /* Take up 1 part of available space */
   border-left: 1px solid #004bba;
   padding-left: 20px;
   min-width: 200px;

@@ -2,11 +2,11 @@
   border: 2px dashed #1f7bdf;
   border-radius: 12px;
   padding: 15px;
-  min-height: 200px;
+  min-height: 200px; /* Minimum height to hold items */
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Highlight panel when dragging over */
+/* Highlight panel when a favourite item is dragged over it */
 .favourites-panel.drag-over {
   background-color: #b5c3d8;
   border-color: #0056b3;
@@ -54,4 +54,3 @@
 .favourites-panel button:active {
   transform: translateY(0);
 }
-

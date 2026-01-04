@@ -54,7 +54,7 @@
 .floor-plan-image {
   width: 100%;
   max-height: 400px;
-  object-fit: contain;
+  object-fit: contain; /* keep aspect ratio */
   border-radius: 8px;
 }
 
@@ -66,7 +66,7 @@
   border-radius: 8px;
 }
 
-/* Responsive – unchanged behavior */
+/* Responsive */
 @media (max-width: 768px) {
   .tab-button {
     padding: 8px 12px;

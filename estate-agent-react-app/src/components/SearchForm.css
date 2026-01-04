@@ -1,6 +1,6 @@
 .search-form {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Flex container for form elements */
+  flex-direction: column; /* Stack fields vertically */
   gap: 20px;
   padding: 15px;
   margin-bottom: 50px;
@@ -27,7 +27,7 @@
 .search-btn {
   background-color: #0764c8;
   color: #ffffff;
-  border: none;
+  border: none; /* Remove default border */
   padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
@@ -40,4 +40,3 @@
 .search-btn:hover {
   background-color: #022b5a;
 }
-

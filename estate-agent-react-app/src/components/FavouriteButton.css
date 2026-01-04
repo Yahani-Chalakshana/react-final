@@ -1,25 +1,28 @@
+/* Base style for the favourite button */
 .favourite-btn {
   background-color: #2465f1;
   color: #ffffff;
   border: none;
   padding: 8px 14px;
   border-radius: 6px;
-  cursor: pointer;
+  cursor: pointer; /* Pointer cursor on hover to indicate clickable */
   font-weight: 500;
   font-size: 0.95rem;
   transition: background-color 0.3s ease;
   margin-top: 5px;
 }
 
+/* Hover effect for base button */
 .favourite-btn:hover {
   background-color: #020a96;
 }
 
-/* Optional: different color if already favourite */
+/* Style when the property is already added to favourites */
 .favourite-btn.fav-active {
   background-color: #1f7bdf;
 }
 
+/* Hover effect for active favourite button */
 .favourite-btn.fav-active:hover {
   background-color: #022b5a;
 }
