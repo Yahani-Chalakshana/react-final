@@ -53,15 +53,22 @@ To run the project locally, follow the steps below:
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-
+   ```
+   
 2. Navigate to the project directory:
+    ```bash
     cd estate-agent-app
-
+    ```
+    
 3. Install dependencies:
+    ```bash
     npm install
-
+    ```
+    
 4. Start the development server:
+    ```bash
     npm run dev
+    ```
 
 5. Open the application in your browser at:
     http://localhost:5173
@@ -72,7 +79,7 @@ To run the project locally, follow the steps below:
 
 - The application was manually tested to ensure that all required functionality works as expected.
 
-## Search and Filtering
+### Search and Filtering
 
 - Selecting a property type (House or Flat) correctly filters the property list
 
@@ -86,13 +93,13 @@ To run the project locally, follow the steps below:
 
 - Date filtering returns only properties added after the selected date
 
-## Combined Filters
+### Combined Filters
 
 - Multiple filters can be applied simultaneously without errors
 
 - Clearing filters restores the full property list
 
-## Favourites
+### Favourites
 
 - Properties can be added to and removed from favourites
 
@@ -102,7 +109,7 @@ To run the project locally, follow the steps below:
 
 - Drag-and-drop support for adding and removing favourites
 
-## Routing
+### Routing
 
 - Navigation between pages works without full page reloads
 
@@ -116,12 +123,9 @@ To run the project locally, follow the steps below:
 
 - User input is handled using controlled components, and no raw HTML rendering or dangerouslySetInnerHTML is used.
 
-- A Content Security Policy (CSP) is implemented via a meta tag in the index.html
-file. 
+- A Content Security Policy (CSP) is implemented via a meta tag in the index.html file. 
 
-- The CSP restricts scripts, images, and frames to trusted sources only, preventing unauthorised script execution. External content such as the embedded.
-
-- Google Maps iframe is explicitly allowed through the CSP configuration.
+- The CSP restricts scripts, images, and frames to trusted sources only, preventing unauthorised script execution. External content such as the embedded Google Maps iframe is explicitly allowed through the CSP configuration.
 
 - No sensitive user data is collected or stored. Only non-sensitive application state (favourite properties) is persisted using the browser’s localStorage API.
 
