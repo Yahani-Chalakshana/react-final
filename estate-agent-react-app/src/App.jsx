@@ -4,10 +4,17 @@ import PropertyPage from "./pages/PropertyPage";
 import AllPropertiesPage from "./pages/AllPropertiesPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function App() {
-  const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState(() => {
+    const saved = localStorage.getItem("favourites");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites]);
 
   return (
     <BrowserRouter>

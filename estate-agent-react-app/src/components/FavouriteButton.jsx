@@ -15,6 +15,7 @@ const FavouriteButton = ({ property, favourites, setFavourites }) => {
     <button
       className={`favourite-btn ${isFav ? "fav-active" : ""}`}
       onClick={toggleFavourite}
+      aria-label={isFav ? "Remove from favourites" : "Add to favourites"}
     >
       {isFav ? "Remove from Favourites" : "Add to Favourites"}
     </button>

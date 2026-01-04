@@ -35,6 +35,7 @@ const SearchPage = ({ favourites, setFavourites }) => {
             className="property-card"
             draggable
             onDragStart={(e) => handleDragStart(e, property.id)}
+            aria-label="Property card draggable to favourites"
           >
             <h3>{property.type}</h3>
             <p>{property.location}</p>

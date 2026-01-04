@@ -22,6 +22,7 @@ const FavouriteItem = ({ property, favourites, setFavourites }) => {
       draggable
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
+      aria-label="Favourite property item"
     >
       <h4>{property.type}</h4>
       <p>{property.location}</p>

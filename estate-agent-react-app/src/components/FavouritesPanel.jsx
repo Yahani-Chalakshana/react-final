@@ -31,6 +31,16 @@ const FavouritesPanel = ({ favourites, setFavourites }) => {
       onDragLeave={handleDragLeave}
     >
       <h2>Favourites</h2>
+
+      {favourites.length > 0 && (
+        <button
+          onClick={() => setFavourites([])}
+          style={{ marginBottom: "10px" }}
+        >
+          Clear Favourites
+        </button>
+      )}
+      
       {favourites.length === 0 && <p>No favourites added yet.</p>}
 
       {favourites.map((property) => (

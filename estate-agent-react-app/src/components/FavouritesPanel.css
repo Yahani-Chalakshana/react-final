@@ -31,3 +31,27 @@
   transform: translateY(-1px);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* Clear Favourites button */
+.favourites-panel button {
+  background-color: #041985;
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.favourites-panel button:hover {
+  background-color: #2044bb;
+  transform: translateY(-1px);
+}
+
+.favourites-panel button:active {
+  transform: translateY(0);
+}
+
