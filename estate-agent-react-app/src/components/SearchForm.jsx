@@ -17,8 +17,12 @@ const SearchForm = ({ onFilter }) => {
     addedAfter: null,
   });
 
+  // 🔧 FIX: normalize widget values
   const update = (key, value) => {
-    setFilters({ ...filters, [key]: value });
+    setFilters((prev) => ({
+      ...prev,
+      [key]: value === undefined || value === "" ? null : value,
+    }));
   };
 
   const submit = (e) => {
@@ -43,6 +47,7 @@ const SearchForm = ({ onFilter }) => {
           value={filters.bedrooms}
           onChange={(v) => update("bedrooms", v)}
           min={1}
+          valueType="number"   // 🔧 FIX
         />
       </div>
 
@@ -52,6 +57,7 @@ const SearchForm = ({ onFilter }) => {
           value={filters.minPrice}
           onChange={(v) => update("minPrice", v)}
           step={50000}
+          valueType="number"   // 🔧 FIX
         />
       </div>
 
@@ -61,6 +67,7 @@ const SearchForm = ({ onFilter }) => {
           value={filters.maxPrice}
           onChange={(v) => update("maxPrice", v)}
           step={50000}
+          valueType="number"   // 🔧 FIX
         />
       </div>
 
